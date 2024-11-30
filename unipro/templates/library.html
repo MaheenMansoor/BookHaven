@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Library</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles.css') }}">
+    <style>
+        /* Global Styles */
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(to right, #6a11cb, #2575fc);
+            color: #333;
+            animation: fadeIn 1s ease-out;
+        }
+
+        /* Fade-in animation */
+        @keyframes fadeIn {
+            0% {
+                opacity: 0;
+            }
+
+            100% {
+                opacity: 1;
+            }
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 40px auto;
+            background-color: #ffffff;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+            overflow-y: auto;
+            max-height: 70vh;
+            position: relative;
+            animation: zoomIn 0.8s ease-out;
+        }
+
+        /* Zoom-in animation */
+        @keyframes zoomIn {
+            0% {
+                transform: scale(0.8);
+                opacity: 0;
+            }
+
+            100% {
+                transform: scale(1);
+                opacity: 1;
+            }
+        }
+
+        h1 {
+            text-align: center;
+            color: #333;
+            font-size: 36px;
+            margin-bottom: 20px;
+            font-weight: 600;
+            animation: slideInUp 1s ease-out;
+        }
+
+        /* Slide-in animation for heading */
+        @keyframes slideInUp {
+            0% {
+                transform: translateY(20px);
+                opacity: 0;
+            }
+
+            100% {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        /* Form styling */
+        form {
+            margin-bottom: 20px;
+        }
+
+        label {
+            font-size: 18px;
+            margin-bottom: 8px;
+            display: block;
+            color: #333;
+            font-weight: bold;
+        }
+
+        form input[type="text"] {
+            padding: 12px;
+            font-size: 18px;
+            border: 2px solid #ddd;
+            border-radius: 8px;
+            width: 100%;
+            margin-bottom: 20px;
+            outline: none;
+            transition: 0.3s;
+        }
+
+        form input[type="text"]:focus {
+            border-color: #2575fc;
+            box-shadow: 0 0 5px rgba(37, 117, 252, 0.5);
+        }
+
+        form button {
+            padding: 12px 20px;
+            background-color: #2575fc;
+            color: #fff;
+            border: 2px solid #2575fc;
+            border-radius: 8px;
+            font-size: 18px;
+            cursor: pointer;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+        }
+
+        form button:hover {
+            background-color: #1a59d3;
+            transform: scale(1.05);
+        }
+
+        /* Flash messages styles */
+        .flashes {
+            list-style: none;
+            padding: 0;
+            margin: 10px 0;
+            background-color: #f9f9f9;
+            padding: 10px;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .flashes li {
+            color: #333;
+            margin-bottom: 8px;
+        }
+
+        /* Table styling */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 30px;
+        }
+
+        th,
+        td {
+            padding: 15px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+            font-size: 16px;
+        }
+
+        th {
+            background-color: #f2f2f2;
+            font-weight: bold;
+            color: #333;
+        }
+
+        td {
+            background-color: #fafafa;
+        }
+
+        table tr:hover {
+            background-color: #e9f0fe;
+            transform: translateY(-2px);
+            transition: all 0.3s ease;
+        }
+
+        /* Footer Styling */
+        .footer {
+            margin-top: 40px;
+            background-color: #333;
+            color: white;
+            padding: 40px 20px;
+            box-shadow: 0 -4px 6px rgba(0, 0, 0, 0.1);
+            animation: footerIn 1s ease-out;
+        }
+
+        /* Footer animation */
+        @keyframes footerIn {
+            0% {
+                transform: translateY(50px);
+                opacity: 0;
+            }
+
+            100% {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        .footer-content {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+        .footer-section h4 {
+            font-size: 20px;
+            margin-bottom: 10px;
+            font-weight: 600;
+        }
+
+        .footer-section p,
+        .footer-section ul {
+            font-size: 16px;
+        }
+
+        .footer-section a {
+            color: #fff;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .footer-section a:hover {
+            color: #2575fc;
+        }
+
+        .footer-bottom {
+            text-align: center;
+            margin-top: 20px;
+            font-size: 14px;
+        }
+
+        /* Responsive Design */
+        @media screen and (max-width: 768px) {
+            .footer-content {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .footer-section {
+                width: 100%;
+                text-align: center;
+            }
+
+            form {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+            }
+
+            form input[type="text"] {
+                width: 80%;
+                margin-bottom: 10px;
+            }
+
+            form button {
+                width: 80%;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <nav class="navbar">
+        <div class="logo">MyWebsite</div>
+        <ul class="nav-links">
+            <li><a href="/">Home</a></li>
+            <li><a href="/library">Library</a></li>
+            <li><a href="/search">Search Book</a></li>
+            <li><a href="/rent">Rent</a></li>
+        </ul>
+    </nav>
+
+    <div class="container">
+        <h1>Book List</h1>
+
+        <!-- Flash Messages -->
+        {% with messages = get_flashed_messages() %}
+            {% if messages %}
+                <ul class="flashes">
+                    {% for message in messages %}
+                        <li>{{ message }}</li>
+                    {% endfor %}
+                </ul>
+            {% endif %}
+        {% endwith %}
+
+        <form method="POST" action="/add">
+            <label for="book_name">Book Name</label>
+            <input type="text" id="book_name" name="book_name" placeholder="Book Name" required>
+
+            <label for="author_name">Author Name</label>
+            <input type="text" id="author_name" name="author_name" placeholder="Author Name" required>
+
+            <button type="submit">Add Book</button>
+        </form>
+
+        <!-- Delete All Books Form -->
+        <form method="POST" action="/library" style="margin-top: 20px;">
+            <button type="submit">Delete All Books</button>
+        </form>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>Book Name</th>
+                    <th>Author Name</th>
+                    <th>Quantity</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% if books %}
+                    {% for book in books %}
+                        <tr>
+                            <td>{{ book['book_name'] }}</td>
+                            <td>{{ book['author_name'] }}</td>
+                            <td>{{ book['quantity'] }}</td>
+                            <td>
+                                <form method="POST" action="/delete" style="display:inline;">
+                                    <input type="hidden" name="book_name" value="{{ book['book_name'] }}">
+                                    <input type="hidden" name="author_name" value="{{ book['author_name'] }}">
+                                    <button type="submit">Delete Book</button>
+                                </form>
+                            </td>
+                        </tr>
+                    {% endfor %}
+                {% else %}
+                    <tr>
+                        <td colspan="4" style="text-align: center;">No books available</td>
+                    </tr>
+                {% endif %}
+            </tbody>
+        </table>
+    </div>
+
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-section about">
+                <h4>About Us</h4>
+                <p>We provide books for rent at affordable prices.</p>
+            </div>
+            <div class="footer-section contact">
+                <h4>Contact Us</h4>
+                <p>Email: contact@mywebsite.com</p>
+                <p>Phone: +123 456 789</p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2024 MyWebsite. All Rights Reserved.</p>
+        </div>
+    </footer>
+</body>
+
+</html>

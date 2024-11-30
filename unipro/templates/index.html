@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Flask App</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles.css') }}">
+
+    <style>
+        /* General styles */
+        body {
+            
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f3f4f6;
+        }
+
+        /* Main Container */
+        .container {
+            background-color: cadetblue;
+            text-align: center;
+            margin-top: 80px;
+            padding: 20px;
+        }
+
+        #headingback {
+            font-size: 40px;
+            color: #ffffff;
+            background: linear-gradient(135deg, #2980b9, #3498db);
+            padding: 40px 20px;
+            margin-left: 6%;
+            border-radius: 8px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            animation: fadeIn 2s ease-out;
+        }
+
+        #buttonhead {
+            background-color: #2980b9;
+            color: white;
+            border: none;
+            height: 15%;
+            width: 40%;
+            padding: 15px 30px;
+            font-size: 18px;
+            cursor: pointer;
+            border-radius: 15px;
+            margin-top: 45%; /* Increased margin-top */
+            transition: background-color 0.3s ease;
+            
+        }
+
+        #buttonhead:hover {
+            background-color:rebeccapurple;
+        }
+
+        /* Heading & Case Study Section */
+        .head {
+            text-align: center;
+            margin-top: 50px;
+            background-color: #ffffff;
+            padding: 40px;
+            background-color: #297fb93a;
+            border-radius: 8px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+            animation: slideIn 2s ease-out;
+        }
+
+        #heading2 {
+            font-size: 32px;
+            color: #34495e;
+            margin-bottom: 20px;
+        }
+
+        #headp {
+            font-size: 18px;
+            color: #7f8c8d;
+            line-height: 1.8;
+            text-align: justify;
+        }
+
+        /* Section with cards */
+        .row {
+            margin-top: 60px;
+            text-align: center;
+        }
+
+        #row_heading {
+            font-size: 28px;
+            color: #2c3e50;
+            margin-bottom: 50px;
+            font-weight: bold;
+        }
+
+        .book-cards {
+            display: flex;
+            justify-content: space-around;
+            margin-top: 60px;
+            flex-wrap: wrap;
+        }
+
+        .card {
+            background-color: #ffffff;
+            padding: 40px;
+            width: 280px;
+            margin-bottom: 40px;
+            border-radius: 10px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .card:hover {
+            transform: scale(1.05);
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15);
+        }
+
+        .card h4 {
+            background-color: #1abc9c;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 5px;
+            margin-bottom: 20px;
+            font-size: 18px;
+        }
+
+        .card p {
+            color: #7f8c8d;
+            font-size: 16px;
+            line-height: 1.6;
+        }
+
+        /* Animation */
+        @keyframes fadeIn {
+            0% {
+                opacity: 0;
+            }
+            100% {
+                opacity: 1;
+            }
+        }
+
+        @keyframes slideIn {
+            0% {
+                transform: translateX(-100%);
+            }
+            100% {
+                transform: translateX(0);
+            }
+        }
+
+    </style>
+</head>
+
+<body>
+
+    <nav class="navbar">
+        <div class="logo">MyWebsite</div>
+        <ul class="nav-links">
+            <li><a href="/">Home</a></li>
+            <li><a href="/library">Library</a></li>
+            <li><a href="/search">Search Book</a></li>
+            <li><a href="/rent">Rent</a></li>
+        </ul>
+    </nav>
+
+    <div class="container">
+        <h1 id="headingback">Welcome to Our Library</h1>
+        <button id="buttonhead">VIEW MORE</button>
+    </div>
+
+    <div class="head">
+        <h1 id="heading2">Library Management System: Case Study</h1>
+        <p id="headp">Lorem ipsum dolor sit amet consectetur adipisicing elit. Sunt ratione officiis iure porro ipsam, aliquid
+            ducimus tenetur optio nostrum, reiciendis temporibus voluptatem magni maiores eius cumque dolorum dolorem totam voluptate.</p>
+    </div>
+
+    <div class="row">
+        <h3 id="row_heading">We Offer a Wide Range of Books for Every Reader!</h3>
+    </div>
+
+    <div class="book-cards">
+        <!-- Card 1 -->
+        <div class="card">
+            <h4>FICTION</h4>
+            <p>Explore the world of fictional books. Dive into different genres from mystery to adventure.</p>
+        </div>
+
+        <!-- Card 2 -->
+        <div class="card">
+            <h4>NON-FICTION</h4>
+            <p>Learn and grow with a variety of non-fiction books on different subjects, from history to self-improvement.</p>
+        </div>
+
+        <!-- Card 3 -->
+        <div class="card">
+            <h4>SCIENCE & TECHNOLOGY</h4>
+            <p>Stay up-to-date with the latest advancements in science and technology. Books that challenge the boundaries of knowledge.</p>
+        </div>
+    </div>
+
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-section about">
+                <h4>About Us</h4>
+                <p>We are dedicated to providing the best library management services to enhance your reading experience.</p>
+            </div>
+            <div class="footer-section links">
+                <h4>Quick Links</h4>
+                <ul>
+                    <li><a href="/">Home</a></li>
+                    <li><a href="/library">Library</a></li>
+                    <li><a href="/search">Search Book</a></li>
+                    <li><a href="/rent">Rent</a></li>
+                </ul>
+            </div>
+            <div class="footer-section contact">
+                <h4>Contact Us</h4>
+                <p>Email: info@library.com</p>
+                <p>Phone: +1 (234) 567-890</p>
+                <p>Address: 123 Library Lane, Booktown, BK 12345</p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            &copy; 2024 Library Management System | Designed by YourName
+        </div>
+    </footer>
+
+</body>
+
+</html>
